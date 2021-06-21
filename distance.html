@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 7</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app">
+        <h1>Distance Converter</h1>
+        <span>Quantity :</span>
+        <input type="number" v-model.number="quantity">
+        <br>
+        <br>
+        <span>Convert From:</span>
+        <select v-model="convertfrom" style="width:300px; font-size:25">
+            <option v-for = "(a, index) in quantityfrom" v-bind:value = "a.name">{{a.desc}}</option>
+        </select>
+        <span>Convert To:</span>
+        <select v-model="convertto" style="width:300px; font-size:25">
+            <option v-for = "(a,index) in quantityfrom" v-bind:value = "a.name">{{a.desc}}</option>
+        </select>
+        <br><br>
+        <span>{{quantity}} {{convertfrom}} equals {{finalquantity}} {{convertto}}</span>
+    </div>
+    <a href="/index.html">home</a>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                name: '',
+                quantityfrom: [
+                    { desc: "meters", name: "m" },
+                    { desc: "kilometers", name: "km" },
+                    { desc: "centimeters", name: "cm" },
+                    { desc: "miles", name: "mile" },
+                    { desc: "yards", name: "yd" },
+                    { desc: "feets", name: "ft" },
+                    { desc: "incles", name: "in" }
+                ],
+                convertfrom: "m",
+                convertto: "km",
+                quantity: ""
+            },
+            computed: {
+                finalquantity: function () {
+                    var from = this.convertfrom;
+                    var to = this.convertto;
+                    var final;
+                    switch (from) {
+                        case "m":
+                            if (to === "km") {
+                                final = this.quantity * 0.001;
+                            }
+                            if (to === "cm") {
+                                final = this.quantity * 100;
+                            }
+                            if (to === "mile") {
+                                final = this.quantity * 0.000621;
+                            }
+                            if (to === "yd") {
+                                final = this.quantity * 1.093613;
+                            }
+                            if (to === "ft") {
+                                final = this.quantity * 3.280833;
+                            }
+                            if (to === "in") {
+                                final = this.quantity * 39.37;
+                            }
+                            if (to === "m") {
+                                final = this.quantity;
+                            }
+                            break;
+                        case "km":
+                            if (to === "km") {
+                                final = this.quantity;
+                            }
+                            if (to === "cm") {
+                                final = this.quantity * 100000;
+                            }
+                            if (to === "mile") {
+                                final = this.quantity * 0.621371;
+                            }
+                            if (to === "yd") {
+                                final = this.quantity * 1094;
+                            }
+                            if (to === "ft") {
+                                final = this.quantity * 3281;
+                            }
+                            if (to === "in") {
+                                final = this.quantity * 39370;
+                            }
+                            if (to === "m") {
+                                final = this.quantity * 1000;
+                            }
+                            break;
+                        case "cm":
+                            if (to === "km") {
+                                final = this.quantity * 0.00001;
+                            }
+                            if (to === "cm") {
+                                final = this.quantity;
+                            }
+                            if (to === "mile") {
+                                final = this.quantity * 0.000006;
+                            }
+                            if (to === "yd") {
+                                final = this.quantity * 0.010936;
+                            }
+                            if (to === "ft") {
+                                final = this.quantity * 0.032808;
+                            }
+                            if (to === "in") {
+                                final = this.quantity * 0.393701;
+                            }
+                            if (to === "m") {
+                                final = this.quantity * 0.01;
+                            }
+                            break;
+                        case "mile":
+                            if (to === "km") {
+                                final = this.quantity * 1.609344;
+                            }
+                            if (to === "cm") {
+                                final = this.quantity * 160934;
+                            }
+                            if (to === "mile") {
+                                final = this.quantity;
+                            }
+                            if (to === "yd") {
+                                final = this.quantity * 1760;
+                            }
+                            if (to === "ft") {
+                                final = this.quantity * 5280;
+                            }
+                            if (to === "in") {
+                                final = this.quantity * 63360;
+                            }
+                            if (to === "m") {
+                                final = this.quantity * 1609;
+                            }
+                            break;
+                        case "yd":
+                            if (to === "km") {
+                                final = this.quantity *  0.000914;
+                            }
+                            if (to === "cm") {
+                                final = this.quantity * 91.44;
+                            }
+                            if (to === "mile") {
+                                final = this.quantity * 0.000568;
+                            }
+                            if (to === "yd") {
+                                final = this.quantity;
+                            }
+                            if (to === "ft") {
+                                final = this.quantity * 3;
+                            }
+                            if (to === "in") {
+                                final = this.quantity * 36;
+                            }
+                            if (to === "m") {
+                                final = this.quantity * 0.9144;
+                            }
+                            break;
+                        case "ft":
+                            if (to === "km") {
+                                final = this.quantity * 0.000305;
+                            }
+                            if (to === "cm") {
+                                final = this.quantity * 30.480;
+                            }
+                            if (to === "mile") {
+                                final = this.quantity * 0.000189;
+                            }
+                            if (to === "yd") {
+                                final = this.quantity * 0.333333;
+                            }
+                            if (to === "ft") {
+                                final = this.quantity;
+                            }
+                            if (to === "in") {
+                                final = this.quantity * 12;
+                            }
+                            if (to === "m") {
+                                final = this.quantity * 0.3048;
+                            }
+                            break;
+                        case "in":
+                            if (to === "km") {
+                                final = this.quantity * 0.000025;
+                            }
+                            if (to === "cm") {
+                                final = this.quantity * 2.54;
+                            }
+                            if (to === "mile") {
+                                final = this.quantity * 0.000016;
+                            }
+                            if (to === "yd") {
+                                final = this.quantity * 0.027778;
+                            }
+                            if (to === "ft") {
+                                final = this.quantity * 0.083333;
+                            }
+                            if (to === "in") {
+                                final = this.quantity;
+                            }
+                            if (to === "m") {
+                                final = this.quantity * 0.0254;
+                            }
+                            break;
+                    }
+                    return final;
+                }
+            }
+        })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
